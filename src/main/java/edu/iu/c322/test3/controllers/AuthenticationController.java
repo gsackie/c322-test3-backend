@@ -1,8 +1,8 @@
 package edu.iu.c322.test3.controllers;
 
-import edu.iu.habahram.primesservice.model.Customer;
-import edu.iu.habahram.primesservice.service.IAuthenticationService;
-import edu.iu.habahram.primesservice.service.TokenService;
+import edu.iu.c322.test3.model.Customer;
+import edu.iu.c322.test3.service.IAuthenticationService;
+import edu.iu.c322.test3.service.TokenService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,7 +17,6 @@ import java.io.IOException;
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final IAuthenticationService authenticationService;
-
     private TokenService tokenService;
 
 
@@ -48,7 +47,7 @@ public class AuthenticationController {
                                     customer.getUsername()
                                     , customer.getPassword()));
 
-                return authentication.createToken();
+            return tokenService.generateToken(authentication);
     }
 
 
